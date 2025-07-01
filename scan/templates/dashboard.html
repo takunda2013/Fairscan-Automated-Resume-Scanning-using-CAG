@@ -1,0 +1,242 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairScan Dashboard</title>
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="logo">FairScan</div>
+        </a>         
+        
+        <div style="display: flex; align-items: center; gap: 10px;">
+           
+
+             <!-- User Avatar -->
+             <div class="avatar-container" id="avatarDropdown">
+                <div class="avatar-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu" id="userDropdown">
+                    <div class="dropdown-content">
+                        <p class="username">
+                            {% if request.user.get_full_name %}
+                                {{ request.user.get_full_name }}
+                            {% else %}
+                                {{ request.user.username }}
+                            {% endif %}
+                        </p>                        
+                        <form action="/logout/" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                               Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div style="display: flex; align-items: center; gap: 10px; margin-left: auto; position: relative;">
+           
+        </div> -->
+        
+    </header>
+    <div class="container">
+        
+
+        <div>
+            <h1>Resume Scanning Dashboard</h1>
+            <span style="color: red;">We want to view the uploaded Ontology here as well</span>
+        </div>
+        
+        <div class="dashboard-grid">
+            <!-- Key Stats Card -->
+            <div class="card">
+                <div class="card-title">Key Metrics</div>
+                <div class="stats-container">
+
+                <a href="/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="stat-item" style="background-color: rgb(184, 231, 164);">
+                        <div class="stat-value" >
+                            <span id="real-time-processed-resumes">
+                            0
+                            </span>
+                        </div>
+                        <div class="stat-label">Resumes Processed</div>
+                    </div>
+                </a>
+                    <div class="stat-item" style="background-color: rgb(184, 231, 164);">
+                        <div class="stat-value">
+                            
+                            <span id="real-time-fairness-score">
+                            0
+                            </span>
+                        </div>
+                        <div class="stat-label">Fairness Score</div>
+                    </div>
+                    <div class="stat-item" style="background-color: rgb(184, 231, 164);">
+                        <div class="stat-value">
+                            <span id="real-time-demographic-parity">
+                            0
+                            </span>
+                        </div>
+                        <div class="stat-label">Demographic Parity</div>
+                    </div>
+                  <a href="https://example.com" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="stat-item" style="background-color: rgb(234, 180, 180);">
+                            <div class="stat-value">
+                                <span id="real-time-critical-biases">
+                                    0
+                                </span>
+                            </div>
+                            <div class="stat-label">Critical Biases</div>
+                        </div>
+                    </a>
+                    <div class="stat-item" style="background-color: rgb(184, 231, 164);">
+                        <div class="stat-value">
+                            <span id="real-time-processing-speed">
+                            0
+                            </span>
+                        </div>
+                        <div class="stat-label">Resumes/hour</div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <!-- Gender Distribution Chart -->
+            <div class="card">
+                <div class="card-title">Gender Selection Rate</div>
+                <div class="chart-container">
+                    <canvas id="genderChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Table -->
+            <div class="card table-container">
+                <div class="card-title">Bias Detection Summary</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Demographic</th>
+                            <th>Group</th>
+                            <th>Selection Rate</th>
+                            <th>Disparity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gender</td>
+                            <td>Male</td>
+                            <td>42.3%</td>
+                            <td>1.09</td>
+                            <td><span class="badge badge-success">Fair</span></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>Female</td>
+                            <td>31.7%</td>
+                            <td>0.82</td>
+                            <td><span class="badge badge-warning">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ethnicity</td>
+                            <td>White</td>
+                            <td>41.2%</td>
+                            <td>1.07</td>
+                            <td><span class="badge badge-success">Fair</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ethnicity</td>
+                            <td>Black</td>
+                            <td>29.8%</td>
+                            <td>0.77</td>
+                            <td><span class="badge badge-warning">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td>Age</td>
+                            <td>46+</td>
+                            <td>24.8%</td>
+                            <td>0.64</td>
+                            <td><span class="badge badge-danger">Critical</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Gender Chart
+            const genderCtx = document.getElementById('genderChart').getContext('2d');
+            const genderChart = new Chart(genderCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Male', 'Female', 'Non-binary'],
+                    datasets: [
+                        {
+                            label: 'Applicant Pool',
+                            data: [48, 45, 7],
+                            backgroundColor: 'rgba(73, 148, 239, 0.3)',
+                            borderColor: 'rgba(73, 148, 239, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Selected',
+                            data: [52, 36, 12],
+                            backgroundColor: 'rgba(67, 97, 238, 0.7)',
+                            borderColor: 'rgba(67, 97, 238, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            },
+                            max: 60
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <script src="{% static 'js/logging.js' %}" defer></script>
+    <script src="{% static 'js/dashboard js/dynamic_score.js' %}" defer></script>
+
+</body>
+</html>

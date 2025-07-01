@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+env/
+myenv/
+
+# pipenv
+Pipfile.lock
+
+# pyenv
+.python-version
+
+# Other
+*.log
+*.sqlite3
+.DS_Store

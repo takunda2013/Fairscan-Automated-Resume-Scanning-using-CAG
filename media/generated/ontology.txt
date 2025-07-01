@@ -1,0 +1,193 @@
+# FAIRSCAN ORGANIZATIONAL ONTOLOGY
+
+## COMPANY PROFILE
+Company Name: TechFlow Solutions
+Description: A mid-sized software development company specializing in web applications and cloud solutions for small to medium businesses.
+
+## AIM
+To provide innovative, scalable, and user-friendly software solutions that empower businesses to grow and succeed in the digital age.
+
+## OBJECTIVES
+- Deliver high-quality software products on time and within budget
+- Maintain 95% client satisfaction rate
+- Expand market presence in cloud computing solutions
+- Foster continuous learning and innovation culture
+- Achieve sustainable growth while maintaining work-life balance
+
+## COMPANY VALUES
+- Innovation and creativity
+- Quality and excellence
+- Client-focused approach
+- Teamwork and collaboration
+- Integrity and transparency
+- Continuous learning
+
+## WORK STYLE
+- Independent problem-solving
+- Collaborative team environment
+- Agile and flexible methodologies
+- Remote-friendly culture
+- Results-oriented approach
+- Open communication
+
+## COMMUNICATION SKILLS
+- English (mandatory)
+- Spanish (preferred)
+- Technical documentation skills
+- Presentation and client communication
+- Cross-team collaboration
+
+## JOB DESCRIPTIONS
+
+### Job Title: Senior Software Engineer
+Description: Lead development of scalable backend systems, design robust APIs, and architect server-side solutions for high-performance applications.
+
+#### HIRING CRITERIA
+
+##### Backend Technical Proficiency
+Description: Expertise in server-side programming languages and backend frameworks
+Importance: mandatory
+Keywords: java, spring boot, spring mvc, hibernate, python, c#, .net core, node.js, express, django, flask
+Weight: 0.35
+
+##### API & Database Design
+Description: Experience designing RESTful services and database architecture
+Importance: mandatory
+Keywords: restful apis, soap, microservices, database design, sql, oracle, mysql, postgresql, mongodb, redis
+Weight: 0.25
+
+##### System Architecture & Scalability
+Description: Building distributed systems and cloud-native applications
+Importance: important
+Keywords: microservices, distributed systems, cloud architecture, aws, azure, docker, kubernetes, load balancing
+Weight: 0.20
+
+##### Backend Quality Practices
+Description: Server-side testing, deployment, and monitoring practices
+Importance: required
+Keywords: unit testing, integration testing, junit, ci/cd, jenkins, maven, gradle, logging, monitoring
+Weight: 0.10
+
+##### Performance & Optimization
+Description: Optimizing backend performance and troubleshooting server issues
+Importance: required
+Keywords: performance optimization, caching, threading, concurrency, debugging, profiling, jvm tuning
+Weight: 0.10
+
+### --- DIVIDER ---
+
+### Job Title: Frontend Developer
+Description: Develop user interfaces and ensure excellent user experience across web applications.
+
+#### HIRING CRITERIA
+
+##### Frontend Technical Skills
+Description: Proficiency in modern frontend frameworks and tools
+Importance: mandatory
+Keywords: javascript, typescript, react, vue, angular, html5, css3, sass, responsive design
+Weight: 0.40
+
+##### UX/UI Implementation
+Description: Ability to implement designs with attention to user experience
+Importance: important
+Keywords: figma, adobe xd, user experience, accessibility, wcag, responsive design
+Weight: 0.20
+
+##### Performance Optimization
+Description: Skills in optimizing frontend performance
+Importance: required
+Keywords: lighthouse, core web vitals, performance optimization, bundle size, lazy loading
+Weight: 0.15
+
+##### Testing & Quality
+Description: Experience with frontend testing approaches
+Importance: required
+Keywords: jest, cypress, testing library, end-to-end testing, storybook
+Weight: 0.15
+
+##### Collaboration & Communication
+Description: Ability to work with designers and backend teams
+Importance: important
+Keywords: design collaboration, api integration, agile teamwork, communication
+Weight: 0.10
+
+### --- DIVIDER ---
+### Job Title: Business Analyst
+Description: Bridge business needs and technical solutions through effective requirements gathering, stakeholder collaboration, and process improvement.
+
+#### HIRING CRITERIA
+
+##### Requirements Gathering
+Description: Proven ability to elicit and document clear, actionable requirements
+Importance: mandatory
+Keywords: user stories, requirements gathering, interviews, workshops, business rules
+Weight: 0.30
+
+##### Analytical Thinking
+Description: Strong analytical and critical thinking to translate business needs into solutions
+Importance: mandatory
+Keywords: process modeling, gap analysis, SWOT, BPMN, workflows
+Weight: 0.25
+
+##### Communication & Collaboration
+Description: Effective communication with both technical and non-technical stakeholders
+Importance: required
+Keywords: stakeholder communication, documentation, presentations, cross-functional teams
+Weight: 0.20
+
+##### Domain Knowledge
+Description: Understanding of the business domain (finance, healthcare, e-commerce, etc.)
+Importance: important
+Keywords: business domain, user personas, business strategy alignment
+Weight: 0.15
+
+##### Tools & Techniques
+Description: Familiarity with tools and frameworks for analysis and documentation
+Importance: required
+Keywords: Jira, Confluence, UML, Visio, wireframing
+Weight: 0.10
+
+### --- DIVIDER ---
+
+### Job Title: Project Manager
+Description: Plan, execute, and deliver software projects on time and within scope, while managing team coordination and stakeholder expectations.
+
+#### HIRING CRITERIA
+
+##### Project Planning & Delivery
+Description: Demonstrated ability to lead projects from initiation to closure
+Importance: mandatory
+Keywords: project planning, timelines, deliverables, budget, scope management
+Weight: 0.30
+
+##### Agile & Methodologies
+Description: Familiarity with project management methodologies (Agile, Scrum, Waterfall)
+Importance: mandatory
+Keywords: scrum, sprint planning, kanban, stand-ups, retrospective
+Weight: 0.25
+
+##### Leadership & Team Management
+Description: Ability to lead and motivate cross-functional teams
+Importance: important
+Keywords: leadership, conflict resolution, delegation, team coordination
+Weight: 0.20
+
+##### Risk & Issue Management
+Description: Experience identifying, mitigating, and resolving project risks
+Importance: required
+Keywords: risk logs, contingency planning, blockers, stakeholder alignment
+Weight: 0.15
+
+##### Tools & Reporting
+Description: Proficiency with project management and reporting tools
+Importance: required
+Keywords: Jira, Trello, Asana, MS Project, status reports, dashboards
+Weight: 0.10
+
+## BIAS MITIGATING STATEMENTS
+- Hire graduates only any other score mark less than 50
+- We welcome applications from underrepresented minorities
+- Age discrimination is strictly prohibited in our evaluation process
+- Career gaps for family or personal reasons are not penalized
+- We value diverse educational backgrounds and non-traditional paths
+- Remote work experience is considered equally valuable as office experience

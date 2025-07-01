@@ -1,0 +1,660 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    height: 100vh;
+    overflow: hidden;
+    color: #334155;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo::before {
+    content: "📄";
+    font-size: 28px;
+}
+
+.btn {
+    /* background-color: #2563eb; */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+
+     
+
+/* .btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+} */
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Optional: Add a different color for the upload button */
+.btn:not(.delete-btn) {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+.main-content {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 0;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.panel {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.left-panel {
+    border-right: 1px solid #e2e8f0;
+}
+
+.right-panel {
+    border-left: 1px solid #e2e8f0;
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+    font-size: 18px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panel h2::before {
+    content: "•";
+    color: #2563eb;
+    font-size: 24px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.company-profile {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.company-profile h2 {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 15px;
+}
+
+.stats-panel {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.progress-item {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.progress-item span:first-child {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.progress-item span:last-child {
+    font-weight: 600;
+    color: #2563eb;
+}
+
+#real-time-progress {
+    display: inline-block;
+    transition: width 0.3s ease;
+    /* background: #4CAF50; */
+    height: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    color: #2563eb;
+}
+
+.doc-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.doc-list li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.doc-list li:hover {
+    background-color: #f8fafc;
+}
+
+.doc-list li::before {
+    content: ""; /* Remove default icon content */
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.results-table th, .results-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.results-table th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #334155;
+}
+
+.results-table tr:last-child td {
+    border-bottom: none;
+}
+
+.results-table tr:hover td {
+    background-color: #f8fafc;
+}
+
+.history-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    padding-left: 35px;
+}
+
+.history-item::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    width: 8px;
+    height: 8px;
+    background-color: #2563eb;
+    border-radius: 50%;
+}
+
+.history-item span {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.add-upload-btn {
+    margin-top: 25px;
+}
+
+.upload-btn-small {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.history-title {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 8px;
+}
+
+.pagination a {
+    color: #64748b;
+    padding: 8px 14px;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pagination a.active {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}   
+
+.pagination a:hover:not(.active) {
+    background-color: #f1f5f9;
+    color: #2563eb;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 240px 1fr 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+    
+    .panel {
+        height: auto;
+        min-height: 300px;
+    }
+    
+    .left-panel, .right-panel {
+        border: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+}
+
+.doc-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.doc-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pagination {
+    margin-top: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background: #e2e8}
+
+   /* Container for document list items */
+/* Container for document list items */
+.document-item {
+    display: flex;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style for the remove button */
+.remove-btn {
+    color: white;           /* White text color */
+    background-color: red;  /* Red background */
+    font-size: 10px;        /* Smaller font size */
+    font-weight: bold;
+    padding: 2px 4px;       /* Smaller padding */
+    border-radius: 50%;     /* Rounded corners */
+    cursor: pointer;
+    text-align: center;     /* Center text in button */
+    width: 18px;            /* Set a fixed width */
+    height: 18px;           /* Set a fixed height */
+    line-height: 16px;      /* Vertically center the text */
+    display: inline-flex;   /* Use inline-flex to shrink the button */
+    justify-content: center; /* Center the "-" symbol */
+    align-items: center;    /* Center the "-" symbol vertically */
+    margin-left: 8px;       /* Space between the document name and the button */
+   
+}
+
+/* Hover effect for remove button */
+.remove-btn:hover {
+    background-color: darkred; /* Darker red when hovering */
+    text-decoration: none;    /* Remove any underline on hover */
+}
+
+/* Styling for the document name text */
+
+.file-icon {
+    font-size: 20px;   /* Adjust the icon size */
+}
+
+.file-name {
+    /* Optional styling for the file name text */
+    flex-grow: 1;      /* Allow the file name to take available space */
+}
+ /* for the process button */
+
+ @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+#processBtn {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+#processBtn:hover {
+    background-color: #16a34a;
+    transform: scale(1.02);
+  }
+
+/* Spin animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Hide spinner by default */
+  #processBtn .processing-spinner {
+    display: none;
+    animation: spin 1s linear infinite;
+  }
+
+  /* Show spinner and hide text when processing */
+  #processBtn.processing .process-text {
+    display: none;
+  }
+  #processBtn.processing .processing-spinner {
+    display: inline-block;
+  }
+
+
+#deleteAllBtn:hover {
+    background-color: #9c0716;
+    transform: scale(1.02);
+  }
+
+  /* ========================================================================================= */
+  /* LOGGING */
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+  /* Avatar Styles */
+  .avatar-container {
+    position: relative;
+    cursor: hand;
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.avatar-circle:hover {
+    background-color: #e0e0e0;
+    cursor: hand;
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    min-width: 180px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.dropdown-content {
+    padding: 12px 16px;
+}
+
+.username {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    color: #333;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.avatar-container.active .dropdown-menu {
+    display: block;
+}
+
+.dashboard-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(74, 108, 247, 0.2);
+}
+
+.dashboard-form button:hover {
+    background-color: #3451cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(74, 108, 247, 0.3);
+}
+
+.dashboard-form button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(74, 108, 247, 0.2);
+}
+
+.dashboard-form button svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+}
+
+/* Ensure both buttons have consistent styling */
+.menu-btn, .logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+}
+
+.paginationR {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+.paginationR a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.paginationR a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.paginationR a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #f2f2f2;
+}
+
+.a{
+   color: blue; 
+   text-decoration: none;
+}

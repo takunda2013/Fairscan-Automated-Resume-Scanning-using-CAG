@@ -1,0 +1,261 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairScan</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="{% static 'js/mammoth.browser.min.js' %}" defer></script>
+    <script src="{% static 'js/resultsTablePagination.js' %}" defer></script>
+
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+</head>
+<body>
+    <div class="container">
+       
+        <header>
+            <div class="logo">FairScan</div>  
+            <div class="header-controls">
+                <!-- <form action="/dashboard/" method="post" class="dashboard-form">
+                    {% csrf_token %}
+
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <rect x="5" y="5" width="7" height="7" rx="1"></rect>
+                            <rect x="12" y="5" width="7" height="7" rx="1"></rect>
+                            <rect x="5" y="12" width="7" height="7" rx="1"></rect>
+                            <rect x="12" y="12" width="7" height="7" rx="1"></rect>
+                        </svg>
+                        Dashboard
+                    </button>
+                </form> -->
+                
+                <!-- User Avatar -->
+                <div class="avatar-container" id="avatarDropdown">
+                    <div class="avatar-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu" id="userDropdown">
+                        <div class="dropdown-content">
+                            <p class="username">
+                                {% if request.user.get_full_name %}
+                                    {{ request.user.get_full_name }}
+                                {% else %}
+                                    {{ request.user.username }}
+                                {% endif %}
+                            </p>
+                          
+                            <form action="/logout/" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="logout-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16 17 21 12 16 7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+
+        <div class="main-content">
+            <!-- Left Panel -->
+            <div class="panel left-panel">
+                <div class="left-column">
+                    <div class="company-profile">
+                        <h2>Company Ontology</h2>
+ <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Upload Your Company Ontology Document.
+                            <a href="/document/fairscanTemplate" target="_blank" style="color: blue; text-decoration: none;">Download template</a>
+                        </p>                        
+                        <small style="color: red;">
+                            Note that this action updates the Ontology Document
+                        </small>
+                        <button class="btn upload-btn-small" onclick="getOneDocument()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Upload Profile
+                        </button>
+                        <input type="file" id="fileInput" style="display:none" onchange="uploadOntology(event)"/>
+                    </div>
+                    <!-- DOCMENT -->
+                    <div class="stats-panel">
+                        <h2>Document Stats</h2>
+                        <!-- <div class="progress-item">
+                            <span>Processing Progress</span>
+                            <span>{{ progress }}%</span>
+                        </div> -->
+                        <div class="progress-item">
+                            <span>Processing Progress</span>
+                            <!-- Add id to the progress element -->
+                            <span id="real-time-progress">0%</span>
+                        </div>
+
+                        <div class="progress-item">
+                            <span>Completed</span>
+                            <span id="real-time-completed"></span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Pending</span>
+                            <span id="real-time-pending"></span>
+                        </div>
+                        <div class="progress-item">
+                            <span>Total Documents</span>
+                            <span id="total-documents"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Middle Panel -->
+            <div class="panel">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <h2 style="font-size: 1.125rem; font-weight: 500;">New Resumes</h2>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <!-- Delete Button -->
+                            <button class="btn delete-btn" id="deleteAllBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 6h18"></path>
+                                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                </svg>
+                                Clear
+                            </button>
+                        </div>
+                        <div class="file-upload-container">
+                            <!-- Upload Button -->
+                            <form id="uploadForm" enctype="multipart/form-data" onsubmit="return false;">
+                                <button type="button" class="btn" id="uploadBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    Upload
+                                </button>
+                                {% csrf_token %}
+                                <input type="file" id="file-upload" style="display:none" multiple>
+                            </form>
+                        </div>
+                    
+                    
+                        <button id="processBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <!-- Document outline -->
+                                <rect x="4" y="3" width="16" height="18" rx="2" ry="2" />
+                                <!-- Header line -->
+                                <line x1="4" y1="7" x2="20" y2="7" />
+                                <!-- Scanning beam -->
+                                <line x1="4" y1="12" x2="20" y2="12" stroke="blue" />
+                                <!-- Bottom lines for text -->
+                                <line x1="8" y1="16" x2="16" y2="16" />
+                                <line x1="8" y1="18" x2="14" y2="18" />
+                            </svg>
+                            
+                            <span class="process-text">Process</span>
+                            <svg class="processing-spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                </div>
+                  
+                
+                <div>
+                    <p style="color: #64748b; margin-bottom: 10px;">Recently uploaded documents:</p>
+                    <div id="uploaded-documents">
+                        <ol class="doc-list" id="doc-list">
+                            <!-- Documents will appear here -->
+                        </ol>
+                        <div class="pagination" id="pagination">
+                            <!-- Pagination buttons will appear here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h2>Processing Results</h2>
+                    <input type="text" id="searchInput" placeholder="Search documents..." style="margin-bottom: 10px; padding: 5px; width: 100%;">
+
+                   <table class="results-table" id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Document Name</th>
+                                <th>Processing Score</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td>Annual_Report_2023.pdf</td>ss
+                                <td>92%</td>
+                                <td><a href="#">name</a></td>
+                            </tr>
+                            <tr>
+                                <td>Financial_Statements_Q1.pdf</td>
+                                <td>85%</td>
+                                <td><a href="#">name</a></td>
+                            </tr>
+                            <tr>
+                                <td>Employee_Handbook_v2.docx</td>
+                                <td>78%</td>
+                                <td><a href="#">name</a></td>
+                            </tr>
+                            <tr>
+                                <td>Contract_Agreement_Signed.pdf</td>
+                                <td>65%</td>
+                                <td><a href="#">name</a></td>
+                            </tr> -->
+                            <!-- Add more rows if needed -->
+                        </tbody>
+                    </table>
+
+                    <div class="paginationR" id="paginationR"></div>
+                   
+
+                </div>
+            </div>
+            
+            <!-- Right Panel -->
+           <div class="panel right-panel">
+                <h2 class="history-title">Processing History</h2>
+                
+                <div class="history-item">
+                    <span>Loading history...</span>
+                    Please wait while we fetch your document history
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="../static/js/upload.js" defer></script> -->
+    <script src="../static/js/multi_upload.js" defer></script>
+    {% load static %}
+    <script src="{% static 'js/index_websockets.js' %}" defer></script>
+    <script src="{% static 'js/logging.js' %}" defer></script>
+    {% csrf_token %}
+    
+    <!-- JavaScript -->
+    <script src="{% static 'js/index/pastresumes.js' %}"></script>
+
+</body>
+</html>
