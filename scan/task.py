@@ -97,7 +97,7 @@ def process_resume_chain(self, resume_list, user_id):
     results = []
 
     print("LETS LOAD MODELS")
-    model_path = r"C:\Fairscan\takundajori\mysite\scan\main_engine\models\Mistral-7B-Instruct-v0.3-Q3_K_L.gguf"
+    model_path = r"C:\Fairscan\takundajori\mysite\scan\main_engine\models\Mistral-7B-Instruct-v0.3-Q4_K_L.gguf"
     ontology_path = r"C:\Fairscan\takundajori\mysite\media\generated\ontology.txt"
     # Initialize the grading system
     grading_system = FairScanGradingSystem(

@@ -284,7 +284,9 @@ def uploadOntology(request):
                 
             action = "created" if created else "updated"
             print(f"Ontology document {action} successfully")
-
+            
+            #generated the ontology document txt 
+            #saved in the media in /generated
             generator = OntologyGenerator()
     
             success, result = generator.generate_ontology(
@@ -292,7 +294,7 @@ def uploadOntology(request):
                 output_filename='ontology.txt'
             )
 
-            print("SUCCESS ", file_path, " DONE ", success)
+            # print("SUCCESS ", file_path, " DONE ", success)
             
         except Exception as e:
             print(f"Error saving ontology document: {str(e)}")

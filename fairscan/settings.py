@@ -194,6 +194,9 @@ CELERY_TASK_TRACK_STARTED = True  # Track when tasks start
 CELERY_TASK_TIME_LIMIT = 30 * 60  # 30 minutes
 CELERY_TASK_SOFT_TIME_LIMIT = 60  # 1 minute
 
+CELERY_RESULT_EXPIRES = 3600  # Results expire after 1 hour
+CELERY_TASK_IGNORE_RESULT = True  # For tasks that don't need results stored
+
 # # Model files
 # MODELS_DIR = os.path.join(BASE_DIR, 'scan.main_engine', 'models')
 # ONTOLOGY_DIR = os.path.join(BASE_DIR, 'scan.main_engine')

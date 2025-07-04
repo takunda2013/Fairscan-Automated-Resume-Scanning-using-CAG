@@ -6,3 +6,4 @@ mysqlclient
 reportlab
 celery
 redis
+sentence-transformers

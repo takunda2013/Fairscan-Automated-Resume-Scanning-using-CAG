@@ -1,7 +1,7 @@
 # FAIRSCAN ORGANIZATIONAL ONTOLOGY
 
 ## COMPANY PROFILE
-Company Name: TechFlow Solutions
+Company Name: InnovateTech Solutions
 Description: A mid-sized software development company specializing in web applications and cloud solutions for small to medium businesses.
 
 ## AIM

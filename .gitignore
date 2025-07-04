@@ -19,3 +19,5 @@ Pipfile.lock
 *.log
 *.sqlite3
 .DS_Store
+
+models/

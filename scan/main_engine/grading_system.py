@@ -359,6 +359,7 @@ class FairScanGradingSystem:
     ---
     IMPORTANT NOTE: DONT AWARD CANDIDATE MARKS IF HE DOES NOT POSSES THE SKILL AND TECHNOLOGY
     ONLY AWARD MARKS BASED ON AVAILABLE SKILLS AND EXPERIENCE
+    ADHERE TO GUIDELINES
     
     RESPONSE FORMAT (JSON only, no additional text):
     {{
@@ -394,7 +395,7 @@ class FairScanGradingSystem:
                         
             response = self.model(
                 grading_prompt,
-                max_tokens=5000,  # Increased for detailed responses
+                max_tokens=4000,  # Increased for detailed responses
                 temperature=0.0,   # Zero temperature for determinism
                 top_p=1.0,         
                 top_k=1,           
