@@ -115,9 +115,27 @@ pip install -r ./requirements.txt
 
 ## Downoad Models
 
+## Download all-MiniLM-L6-v2
 
+```bash
+# Create the directory if it doesn't exist
+mkdir -p main_engine/models
+```
 
+## Download all-MiniLM-L6-v2 model to the specified directory main_engine/models
+```
+huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir main_engine/models/all-MiniLM-L6-v2
+```
+## Prerequisites
+Make sure you have the required packages installed:
 
+```
+pip install huggingface-hub sentence-transformers
+```
+
+## Download Mistral-7B-Instruct-v0.3-Q3_K_L.gguf model to the specified directory main_engine/models
+
+https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf
 
 🚀 Quick Start
 1. Define Your Organizational Ontology
