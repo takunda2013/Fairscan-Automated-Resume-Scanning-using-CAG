@@ -187,23 +187,27 @@ https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/
 ```
   python manage.py createsuperuser
   ```
-3. **Start the development server**
+3. **Start Celery workers**
+```
+celery -A fairscan worker --loglevel=info -E -Q chainprocessing --pool=threads
+```
+4. **Start the development server**
 ```
   python manage.py runserver
   ```
-4. **Access the application**
+5. **Access the application**
   Open your browser and navigate to http://localhost:8000
 
-5. **Login to the system**
+6. **Login to the system**
   Use your superuser credentials created in step 2
 
-6. **Upload ontology document**
+7. **Upload ontology document**
   You can download a template using the "Download Template" button
   Upload your ontology document
     
-7. **Upload resume dataset**
+8. **Upload resume dataset**
   Upload resumes (I used the dataset from Kaggle [https://www.kaggle.com/datasets/palaksood97/resume-dataset])
   
-8. **Process the data**
+9. **Process the data**
   Click the "Process" button to begin analysis
 
