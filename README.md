@@ -189,7 +189,7 @@ https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/
   ```
 3. **Start Celery workers**
 ```
-celery -A fairscan worker --loglevel=info -E -Q chainprocessing --pool=threads
+  celery -A fairscan worker --loglevel=info -E -Q chainprocessing --pool=threads
 ```
 4. **Start the development server**
 ```
