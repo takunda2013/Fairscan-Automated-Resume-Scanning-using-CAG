@@ -1,6 +1,7 @@
 # FairScan
 An Ontology-Driven Resume Screening Framework for Bias-Free, Context-Autonomous Recruitment
 
+
 ## 🚀 Overview
 Fairscan revolutionizes AI-powered resume screening by eliminating external biases and ensuring complete organizational context autonomy. Unlike traditional systems that rely on generic pre-trained models, Fairscan leverages semantic reasoning and organization-specific ontologies to provide transparent, interpretable, and contextually relevant candidate evaluations.
 
