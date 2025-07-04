@@ -158,7 +158,7 @@ https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/
   python manage.py createsuperuser
   ```
 3. **Start the development server**
-  ```
+```
   python manage.py runserver
   ```
 4. **Access the application**
