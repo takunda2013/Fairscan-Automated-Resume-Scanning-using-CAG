@@ -160,7 +160,7 @@ mkdir -p scan/main_engine/models
 
 ### Download all-MiniLM-L6-v2 model to the specified directory scan/main_engine/models
 ```
-huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir main_engine/models/all-MiniLM-L6-v2
+huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir scan/main_engine/models/all-MiniLM-L6-v2
 ```
 ## Prerequisites
 Make sure you have the required packages installed:
