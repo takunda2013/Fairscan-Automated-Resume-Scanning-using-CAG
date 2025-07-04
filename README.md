@@ -122,7 +122,7 @@ pip install -r ./requirements.txt
 mkdir -p main_engine/models
 ```
 
-## Download all-MiniLM-L6-v2 model to the specified directory main_engine/models
+## Download all-MiniLM-L6-v2 model to the specified directory scan/main_engine/models
 ```
 huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir main_engine/models/all-MiniLM-L6-v2
 ```
@@ -133,9 +133,41 @@ Make sure you have the required packages installed:
 pip install huggingface-hub sentence-transformers
 ```
 
-## Download Mistral-7B-Instruct-v0.3-Q3_K_L.gguf model to the specified directory main_engine/models
+## Download Mistral-7B-Instruct-v0.3-Q3_K_L.gguf model to the specified directory scan/main_engine/models
 
 https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf
 
-🚀 Quick Start
-1. Define Your Organizational Ontology
+# How to Run the System
+
+## Setup and Execution Steps
+
+1. **Run database migrations**
+```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+   
+2. **Create superuser account**
+```
+  python manage.py createsuperuser
+  ```
+3. **Start the development server**
+  ```
+  python manage.py runserver
+  ```
+4. **Access the application**
+  Open your browser and navigate to http://localhost:8000
+
+5. **Login to the system**
+  Use your superuser credentials created in step 2
+
+6. **Upload ontology document**
+  You can download a template using the "Download Template" button
+  Upload your ontology document
+    
+7. **Upload resume dataset**
+  Upload resumes (I used the dataset from Kaggle [https://www.kaggle.com/datasets/palaksood97/resume-dataset])
+  
+8. **Process the data**
+  Click the "Process" button to begin analysis
+
