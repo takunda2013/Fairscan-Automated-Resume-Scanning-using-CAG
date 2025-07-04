@@ -1,4 +1,4 @@
-# FairScan
+# Fairscan
 An Ontology-Driven Resume Screening Framework for Bias-Free, Context-Autonomous Recruitment
 
 
