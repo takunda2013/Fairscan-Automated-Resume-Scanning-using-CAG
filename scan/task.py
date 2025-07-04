@@ -17,77 +17,77 @@ def long_running_task(param1, param2):
 
 
 
-# 1. Create the individual resume processing task
-@shared_task(bind=True)
-def process_single_resume(self, resume_data, user_id):
-    """Process a single resume and save to database"""
-    try:
-        print(f"Processing resume: {resume_data['id']}")
+# # 1. Create the individual resume processing task
+# @shared_task(bind=True)
+# def process_single_resume(self, resume_data, user_id):
+#     """Process a single resume and save to database"""
+#     try:
+#         print(f"Processing resume: {resume_data['id']}")
 
-       #========================================================
-        resume_id = resume_data['id']
+#        #========================================================
+#         resume_id = resume_data['id']
 
 
-        resume = UploadedFile.objects.get(id=resume_id)
+#         resume = UploadedFile.objects.get(id=resume_id)
         
-        # Your AI processing logic here...
-        content = resume_data['content']
+#         # Your AI processing logic here...
+#         content = resume_data['content']
 
-        print("CONTENT ", content)
-        person_identifiers = resume_data['person_identifiers']
+#         print("CONTENT ", content)
+#         person_identifiers = resume_data['person_identifiers']
         
-        # Example: Call your AI analyss function
+#         # Example: Call your AI analyss function
         
-        # Save results to database using transaction for safety
-        with transaction.atomic():
-            # Update the original resume status
-            resume.scan_status = 'graded'
-            resume.save()
-            print("RESUME UPDATED")
+#         # Save results to database using transaction for safety
+#         with transaction.atomic():
+#             # Update the original resume status
+#             resume.scan_status = 'graded'
+#             resume.save()
+#             print("RESUME UPDATED")
             
-        time.sleep(3)  # Simulate long process
+#         time.sleep(3)  # Simulate long process
 
-       #========================================================
-       # 
-       #      
-        # matched_job, match_score = FairScanGradingSystem.find_best_job_match(resume_input=content)
+#        #========================================================
+#        # 
+#        #      
+#         # matched_job, match_score = FairScanGradingSystem.find_best_job_match(resume_input=content)
 
-        # # Your LLM processing logic here
-        # result = FairScanGradingSystem.grade_resume(resume_data['content'],matched_job)
+#         # # Your LLM processing logic here
+#         # result = FairScanGradingSystem.grade_resume(resume_data['content'],matched_job)
         
 
-        print("RESULT ", result)
-        # NO PERSON IDENTIFIERS SHOULD BE PUT IN THE DB STRAIGHT   
+#         print("RESULT ", result)
+#         # NO PERSON IDENTIFIERS SHOULD BE PUT IN THE DB STRAIGHT   
 
-        # # Save to database immediately after processing
-        # from django.contrib.auth.models import User
-        # user = User.objects.get(id=user_id)
+#         # # Save to database immediately after processing
+#         # from django.contrib.auth.models import User
+#         # user = User.objects.get(id=user_id)
         
-        # generated_response = ProcessedResumeText(
-        #     resume_name=resume_data['id'],
-        #     processing_overall_score=result.get('score', 0.0),
-        #     score_evaluation=result.get('evaluation', 'Processing completed'),
-        #     processed_date=datetime.now(),
-        #     processed_by=user
-        # )
-        # generated_response.save()
+#         # generated_response = ProcessedResumeText(
+#         #     resume_name=resume_data['id'],
+#         #     processing_overall_score=result.get('score', 0.0),
+#         #     score_evaluation=result.get('evaluation', 'Processing completed'),
+#         #     processed_date=datetime.now(),
+#         #     processed_by=user
+#         # )
+#         # generated_response.save()
         
-        print(f"✅ Completed and saved: {resume_data['id']}")
+#         print(f"✅ Completed and saved: {resume_data['id']}")
         
-        # return {
-        #     'status': 'success',
-        #     'resume_name': resume_data['id'],
-        #     'score': result.get('score', 0.0)
-        # }
-        return {
-            'status': 'success',
-            'resume_name': resume_data['id'],
-            'score':  0.0
-        }
+#         # return {
+#         #     'status': 'success',
+#         #     'resume_name': resume_data['id'],
+#         #     'score': result.get('score', 0.0)
+#         # }
+#         return {
+#             'status': 'success',
+#             'resume_name': resume_data['id'],
+#             'score':  0.0
+#         }
         
-    except Exception as exc:
-        print(f"❌ Failed processing {resume_data['id']}: {exc}")
-        raise self.retry(exc=exc, countdown=30, max_retries=2)
+#     except Exception as exc:
+#         print(f"❌ Failed processing {resume_data['id']}: {exc}")
+#         raise self.retry(exc=exc, countdown=30, max_retries=2)
 
 
 # 2. Create chain orchestrator task
