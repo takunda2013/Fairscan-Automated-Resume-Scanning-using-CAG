@@ -1,4 +1,4 @@
-# FairScan
+# Fairscan
 An Ontology-Driven Resume Screening Framework for Bias-Free, Context-Autonomous Recruitment
 
 
@@ -96,9 +96,10 @@ HR review integration with audit trails
 ```powershell
 $Env:LLAMA_CUBLAS = "1"
 $Env:FORCE_CMAKE = "1"
-Add path_to_your NVIDIA GPU Computing Toolkit
 
-for example
+# Add path_to_your NVIDIA GPU Computing Toolkit
+
+# for example
 
 $Env:CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_GENERATOR_TOOLSET=cuda='C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1'"
 ```
@@ -118,16 +119,46 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 pip install -r ./requirements.txt
 ```
 
+### 5. Redis Server Configuration
+
+#### Windows (WSL - Windows Subsystem for Linux)
+
+#### 1. Install WSL if not already installed
+```powershell
+# Run in PowerShell as Administrator
+wsl --install
+```
+#### 2. Install Redis in WSL
+```
+# Update package list
+sudo apt update
+
+# Install Redis
+sudo apt install redis-server
+
+# Start Redis service
+sudo service redis-server start
+
+# Enable Redis to start on boot
+sudo systemctl enable redis-server
+```
+#### 3. Test Redis Installation
+```
+# Test Redis connection
+redis-cli ping
+# Should return: PONG
+```
+
 ## Downoad Models
 
-## Download all-MiniLM-L6-v2
+### Download all-MiniLM-L6-v2
 
 ```bash
 # Create the directory if it doesn't exist
-mkdir -p main_engine/models
+mkdir -p scan/main_engine/models
 ```
 
-## Download all-MiniLM-L6-v2 model to the specified directory scan/main_engine/models
+### Download all-MiniLM-L6-v2 model to the specified directory scan/main_engine/models
 ```
 huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir main_engine/models/all-MiniLM-L6-v2
 ```
@@ -156,23 +187,27 @@ https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/
 ```
   python manage.py createsuperuser
   ```
-3. **Start the development server**
-  ```
+3. **Start Celery workers**
+```
+  celery -A fairscan worker --loglevel=info -E -Q chainprocessing --pool=threads
+```
+4. **Start the development server**
+```
   python manage.py runserver
   ```
-4. **Access the application**
+5. **Access the application**
   Open your browser and navigate to http://localhost:8000
 
-5. **Login to the system**
+6. **Login to the system**
   Use your superuser credentials created in step 2
 
-6. **Upload ontology document**
+7. **Upload ontology document**
   You can download a template using the "Download Template" button
   Upload your ontology document
     
-7. **Upload resume dataset**
+8. **Upload resume dataset**
   Upload resumes (I used the dataset from Kaggle [https://www.kaggle.com/datasets/palaksood97/resume-dataset])
   
-8. **Process the data**
+9. **Process the data**
   Click the "Process" button to begin analysis
 
