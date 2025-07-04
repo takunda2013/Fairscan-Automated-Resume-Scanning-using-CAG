@@ -171,7 +171,7 @@ pip install huggingface-hub sentence-transformers
 
 ## Download Mistral-7B-Instruct-v0.3-Q3_K_L.gguf model to the specified directory scan/main_engine/models
 
-https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf
+https://huggingface.co/lmstudio-community/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/Mistral-7B-Instruct-v0.3-Q3_K_L.gguf
 
 # How to Run the System
 
