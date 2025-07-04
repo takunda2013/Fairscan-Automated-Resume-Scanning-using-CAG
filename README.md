@@ -96,9 +96,10 @@ HR review integration with audit trails
 ```powershell
 $Env:LLAMA_CUBLAS = "1"
 $Env:FORCE_CMAKE = "1"
-Add path_to_your NVIDIA GPU Computing Toolkit
 
-for example
+# Add path_to_your NVIDIA GPU Computing Toolkit
+
+# for example
 
 $Env:CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_GENERATOR_TOOLSET=cuda='C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1'"
 ```
