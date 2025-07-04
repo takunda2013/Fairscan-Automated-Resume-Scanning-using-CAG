@@ -6,14 +6,14 @@ Fairscan revolutionizes AI-powered resume screening by eliminating external bias
 
 ### ✨ Key Features
 
-🎯 Bias-Free Screening: Eliminates external biases from pre-trained models
-🏢 Organizational Autonomy: Operates entirely within your infrastructure
-🧠 Cache Augmented Generation: Novel CAG methodology for efficient semantic processing
-📊 SBERT Integration: Advanced semantic similarity matching
-⚡ KV Cache Optimization: Fast ontology-driven context retrieval
-🔒 Privacy-First: Complete data sovereignty with no external dependencies
-📊 Transparent Decisions: Interpretable screening results with clear reasoning
-⚙️ Customizable Ontologies: HR-defined contexts for job requirements and cultural values
+##### 1. 🎯 Bias-Free Screening: Eliminates external biases from pre-trained models
+##### 2. 🏢 Organizational Autonomy: Operates entirely within your infrastructure
+##### 3. 🧠 Cache Augmented Generation: Novel CAG methodology for efficient semantic processing
+##### 4. 📊 SBERT Integration: Advanced semantic similarity matching
+##### 5. ⚡ KV Cache Optimization: Fast ontology-driven context retrieval
+##### 6. 🔒 Privacy-First: Complete data sovereignty with no external dependencies
+##### 7. 📊 Transparent Decisions: Interpretable screening results with clear reasoning
+##### 8. ⚙️ Customizable Ontologies: HR-defined contexts for job requirements and cultural values
 
 ### 🎯 Problem Solved
 Traditional AI resume screening systems face three critical challenges:
@@ -77,14 +77,44 @@ Criteria-based scoring with transparency
 Detailed reasoning and recommendations
 HR review integration with audit trails
 
+# Project Requirements
+
 ## System Requirements
+- **GPU Memory**: 6GB VRAM minimum
+- **CUDA**: Enabled environment required
 
-## 🛠️ Installation
+## Software Requirements
+- **Python**: 3.10
+- **llama-cpp-python**: Latest version
+- **PyTorch**: Latest with CUDA 12.4 support
+- **Torchvision**: Latest with CUDA 12.4 support
 
-=================================
+## Installation Steps
+
+### 1. Set Environment Variables (Windows PowerShell)
+```powershell
+$Env:LLAMA_CUBLAS = "1"
+$Env:FORCE_CMAKE = "1"
+$Env:CMAKE_ARGS="-DGGML_CUDA=on -DCMAKE_GENERATOR_TOOLSET=cuda='C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1'"
+```
+
+### 2. Install llama-cpp-python
+```
+pip install llama-cpp-python --upgrade --force-reinstall --no-cache-dir
+```
+
+### 3. Install PyTorch with CUDA Support
+```
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+```
+
+### 4. Install the requirements.txt 
 ```
 pip install -r ./requirements.txt
 ```
+
+##### Note
+
 
 
 
