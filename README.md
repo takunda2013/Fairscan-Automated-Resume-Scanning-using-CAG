@@ -82,6 +82,7 @@ HR review integration with audit trails
 ## System Requirements
 - **GPU Memory**: 6GB VRAM minimum
 - **CUDA**: Enabled environment required
+- **MySql Workbench 8.0**
 
 ## Software Requirements
 - **Python**: 3.10
