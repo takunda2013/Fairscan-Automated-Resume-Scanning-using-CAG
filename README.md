@@ -125,7 +125,7 @@ pip install -r ./requirements.txt
 
 ```bash
 # Create the directory if it doesn't exist
-mkdir -p main_engine/models
+mkdir -p scan/main_engine/models
 ```
 
 ### Download all-MiniLM-L6-v2 model to the specified directory scan/main_engine/models
