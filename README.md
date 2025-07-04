@@ -21,7 +21,6 @@ Traditional AI resume screening systems face three critical challenges:
 1. Bias Propagation: Inherit irrelevant biases from external training datasets
 2. Privacy Vulnerabilities: Risk exposure of sensitive candidate information
 3. Context Misalignment: Fail to capture organization-specific requirements and values
-
 Fairscan addresses these issues through semantic knowledge representation that accurately captures and utilizes organization-specific hiring contexts.
 
 ## 🏗️ Architecture![main](https://github.com/user-attachments/assets/e272e909-738d-45ce-a4ca-a297a72a5fb5)
@@ -114,7 +113,8 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 pip install -r ./requirements.txt
 ```
 
-##### Note
+## Downoad Models
+
 
 
 
