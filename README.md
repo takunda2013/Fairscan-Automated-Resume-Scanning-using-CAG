@@ -119,6 +119,36 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 pip install -r ./requirements.txt
 ```
 
+### 5. Redis Server Configuration
+
+#### Windows (WSL - Windows Subsystem for Linux)
+
+#### 1. Install WSL if not already installed
+```powershell
+# Run in PowerShell as Administrator
+wsl --install
+```
+#### 2. Install Redis in WSL
+```
+# Update package list
+sudo apt update
+
+# Install Redis
+sudo apt install redis-server
+
+# Start Redis service
+sudo service redis-server start
+
+# Enable Redis to start on boot
+sudo systemctl enable redis-server
+```
+#### 3. Test Redis Installation
+```
+# Test Redis connection
+redis-cli ping
+# Should return: PONG
+```
+
 ## Downoad Models
 
 ### Download all-MiniLM-L6-v2
